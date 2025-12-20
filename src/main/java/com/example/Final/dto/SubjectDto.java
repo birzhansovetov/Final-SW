@@ -1,12 +1,12 @@
 package com.example.Final.dto;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class SubjectDto {
     private Long id;
     private String name;
