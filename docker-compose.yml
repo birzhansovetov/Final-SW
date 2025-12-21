@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  backend-service:
+    build: .
+    image: demo-app
+    container_name: demo-backend-container
+    depends_on:
+      - database-service
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://database-service:5432/demo
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    ports:
+      - "4444:8080"
+
+  database-service:
+    image: postgres:15
+    container_name: demo-database-container
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: demo
+    ports:
+      - "2345:5432"
