@@ -24,3 +24,4 @@ INSERT INTO student_subjects (student_id, subject_id) VALUES
                                                           (2, 3), -- Dias → Algorithms
                                                           (3, 2), -- Aibek → Databases
                                                           (3, 4); -- Aibek → Spring Boot
+INSERT INTO t_permission (name) VALUES ('ROLE_USER');
