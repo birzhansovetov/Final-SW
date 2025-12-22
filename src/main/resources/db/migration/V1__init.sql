@@ -33,6 +33,21 @@ create table t_user (
                         email varchar(150) not null unique,
                         password varchar(255) not null
 );
+CREATE TABLE t_user_permission (
+                                   user_id BIGINT REFERENCES t_user(id),
+                                   permission_id BIGINT REFERENCES t_permission(id),
+                                   PRIMARY KEY (user_id, permission_id)
+);
+create table t_permission (
+                              id bigserial primary key,
+                              name varchar(50) not null unique
+);
+create table t_user (
+                        id bigserial primary key,
+                        username varchar(100),
+                        email varchar(150) not null unique,
+                        password varchar(255) not null
+);
 CREATE TABLE t_user_permissions (
                                     user_id BIGINT REFERENCES t_user(id),
                                     permission_id BIGINT REFERENCES t_permission(id),

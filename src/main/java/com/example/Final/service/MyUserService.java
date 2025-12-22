@@ -22,6 +22,22 @@ public class MyUserService implements UserDetailsService {
     private final UserModelRep userModelRepository;
     private final PasswordEncoder passwordEncoder;
     private final PermissionRep permissionRep;
+=======
+import java.util.Objects;
+
+@Service
+@RequiredArgsConstructor
+@Primary
+public class MyUserService implements UserDetailsService {
+
+    @Autowired
+    private UserModelRep userModelRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private PermissionRep permissionRep;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
