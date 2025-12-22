@@ -15,17 +15,27 @@ CREATE TABLE students (
                           last_name VARCHAR(255),
                           email VARCHAR(255),
                           age INTEGER,
-                          course_id BIGINT,
-                          CONSTRAINT fk_student_course
-                              FOREIGN KEY (course_id)
-                                  REFERENCES courses(id)
+                          course_id BIGINT REFERENCES courses(id)
 );
 
 CREATE TABLE student_subjects (
-                                  student_id BIGINT NOT NULL,
-                                  subject_id BIGINT NOT NULL,
-                                  CONSTRAINT fk_student_subject
-                                      FOREIGN KEY (student_id) REFERENCES students(id),
-                                  CONSTRAINT fk_subject_student
-                                      FOREIGN KEY (subject_id) REFERENCES subjects(id)
+                                  student_id BIGINT REFERENCES students(id),
+                                  subject_id BIGINT REFERENCES subjects(id),
+                                  PRIMARY KEY (student_id, subject_id)
 );
+create table t_permission (
+                              id bigserial primary key,
+                              name varchar(50) not null unique
+);
+create table t_user (
+                        id bigserial primary key,
+                        username varchar(100),
+                        email varchar(150) not null unique,
+                        password varchar(255) not null
+);
+CREATE TABLE t_user_permissions (
+                                    user_id BIGINT REFERENCES t_user(id),
+                                    permission_id BIGINT REFERENCES t_permission(id),
+                                    PRIMARY KEY (user_id, permission_id)
+);
+
